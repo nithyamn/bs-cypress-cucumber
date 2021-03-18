@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://www.google.com/",
+  "ignoreTestFiles": ["*.js", "*.md"],
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "test-results/test-output-[hash].xml"
+  },
+  "pageLoadTimeout": 80000,
+  "chromeWebSecurity": false
+}
