@@ -20,6 +20,6 @@ jobs:
       - name: 'Install all npm dependencies'
         run: npm install
         
-      - name: 'Install browserstack-cypress cli'
-        run: npm install browserstack-cypress-cli & browserstack-cypress run --sync   
+      - name: 'Run test'
+        run: npm run test   
 
