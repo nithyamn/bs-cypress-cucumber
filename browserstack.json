@@ -21,6 +21,8 @@
     ],
     "run_settings": {
         "cypress_config_file": "./cypress.json",
+        "project_name": "'\"$BROWSERSTACK_PROJECT_NAME\"'",
+        "build_name": "'\"$BROWSERSTACK_BUILD_NAME\"'",
         "exclude": [],
         "cypress_version": "6",
         "parallels": "2",
