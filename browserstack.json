@@ -1,7 +1,7 @@
 {
     "auth": {
-        "username": "nithyamani3",
-        "access_key": "9894DfTkEc24j1xdsGjj"
+        "username": "'\"$BROWSERSTACK_USERNAME\"'",
+        "access_key": "'\"$BROWSERSTACK_ACCESS_KEY\"'"
     },
     "browsers": [
         {
