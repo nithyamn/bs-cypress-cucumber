@@ -21,8 +21,5 @@ jobs:
         run: npm install
         
       - name: 'Install browserstack-cypress cli'
-        run: npm install browserstack-cypress-cli
-
-      - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
-        run: browserstack-cypress run --sync
+        run: npm install browserstack-cypress-cli & browserstack-cypress run --sync   
 
