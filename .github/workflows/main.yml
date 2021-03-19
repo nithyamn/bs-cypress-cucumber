@@ -17,8 +17,11 @@ jobs:
       - name: 'Checkout the repository'
         uses: actions/checkout@v2
 
-      - name: 'Building web application to be tested'
+      - name: 'Install all npm dependencies'
         run: npm install
+        
+      - name: 'Install browserstack-cypress cli'
+        run: npm install browserstack-cypress-cli
 
       - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
         run: browserstack-cypress run --sync
