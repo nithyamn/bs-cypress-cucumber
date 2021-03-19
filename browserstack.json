@@ -21,8 +21,6 @@
     ],
     "run_settings": {
         "cypress_config_file": "./cypress.json",
-        "project_name": "Cypress BDD v6.0",
-        "build_name": "Cypress Cucumber config",
         "exclude": [],
         "cypress_version": "6",
         "parallels": "2",
