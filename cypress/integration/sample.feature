@@ -1,6 +1,6 @@
-Feature: Search Google
-  Scenario: Common search
-    Given I'm at Google
-    When I type search word 'github'
-    And Press 'Search'
-    Then I have some results
+Feature: Google
+
+Scenario: Login to Bstackdemo website
+  Given I am on the Bstackdemo website and click on signin
+  When I enter "demouser" and "testingisfun99"
+  Then I should see user as "demouser"

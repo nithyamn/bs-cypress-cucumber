@@ -11,8 +11,8 @@ jobs:
         with:
           username:  ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          build-name: 'Cypress Cucumber config'
-          project-name: 'Cypress BDD v6.0'
+          # build-name: 'Cypress Cucumber config'
+          # project-name: 'Cypress BDD v6.0'
 
       # The next 3 steps are for building the web application to be tested and starting the web server on the runner environment
 

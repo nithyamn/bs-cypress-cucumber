@@ -26,8 +26,8 @@
     "cypress-cucumber-preprocessor": "^4.0.0"
   },
   "devDependencies": {
-    "browserstack-cypress-cli": "^1.8.0",
-    "cypress": "6.2.1",
+    "browserstack-cypress-cli": "^1.11.0",
+    "cypress": "^8.5.0",
     "typescript": "3.7.4"
   },
   "cypress-cucumber-preprocessor": {

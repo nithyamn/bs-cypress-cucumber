@@ -5,26 +5,26 @@
     },
     "browsers": [
         {
-            "browser": "edge",
-            "os": "OS X Catalina",
+            "browser": "Chrome",
+            "os": "Windows 10",
             "versions": [
-                "latest-1"
+                "latest"
             ]
         },
         {
-            "browser": "chrome",
+            "browser": "edge",
             "os": "OS X Catalina",
             "versions": [
-                "latest-2"
+                "latest"
             ]
         }
     ],
     "run_settings": {
         "cypress_config_file": "./cypress.json",
-        "project_name": "'\"$BROWSERSTACK_PROJECT_NAME\"'",
-        "build_name": "'\"$BROWSERSTACK_BUILD_NAME\"'",
+        "project_name": "cypress tests",
+        "build_name": "browserstack-cypress-github-actions-example",
         "exclude": [],
-        "cypress_version": "6",
+        "cypress_version": "8.latest",
         "parallels": "2",
         "npm_dependencies": {
             "cypress-cucumber-preprocessor": "^4.0.0"
