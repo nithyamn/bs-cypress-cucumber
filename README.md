@@ -22,9 +22,10 @@ Execute your cypress tests from Github Actions on [BrowserStack Automate](https:
 To set up the environment variables and other build parameters, please follow our [Github Actions](https://www.browserstack.com/docs/automate/selenium/github-actions#action-setup-env) documentation page.
 
 # Test Execution
-- npm install
-- npm run test
+- Install dependencies : `npm install`
+- Run test: `npm run test`
 
+Note: The command to execute the cypress tests on BrowserStack `browserstack-cypress run --sync` is mentioned in the `package.json` file.
 # Reference
 - https://www.browserstack.com/docs/automate/cypress
 - https://www.browserstack.com/docs/automate/selenium/github-actions
