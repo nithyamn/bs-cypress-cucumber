@@ -12,3 +12,4 @@ env
 results
 log
 .idea
+.DS_Store
