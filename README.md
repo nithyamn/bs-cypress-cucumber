@@ -5,12 +5,12 @@ Execute your cypress tests from Github Actions on [BrowserStack Automate](https:
 
 ## Set your BrowserStack credentials
 - Identify your BrowserStack username and access key from the [BrowserStack Automate Dashboard](https://automate.browserstack.com/) and export them as environment variables using the below commands. 
-- For *nix based and Mac machines:
+	- For * nix based and Mac machines:
       ```
       export BROWSERSTACK_USERNAME=<browserstack-username> &&
       export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
       ```
-  - For Windows:
+  	- For Windows:
       ```
       set BROWSERSTACK_USERNAME=<browserstack-username>
       set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
