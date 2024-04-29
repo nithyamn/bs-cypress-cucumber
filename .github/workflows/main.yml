@@ -13,6 +13,7 @@ jobs:
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           build-name: 'Cypress Cucumber config'
           project-name: 'Cypress BDD v6.0'
+          BUILD_ID: "f395555dd16f1dc5ee339e389186554911ded621"
 
       # The next 3 steps are for building the web application to be tested and starting the web server on the runner environment
 
@@ -23,5 +24,40 @@ jobs:
         run: npm install
         
       - name: 'Run test'
-        run: npm run test   
+        run: |
+          echo "Calling the build status API.. fetching session id..."
+          export BUILD_STATUS_RESPONSE=$( \
+          curl -u "${{env.username}}:${{env.access-key}}" \
+          -X GET "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/builds/${{env.BUILD_ID}}" )
+
+                    
+          echo "Build status response: $BUILD_STATUS_RESPONSE"
+          echo "Getting session ID from the response from above call. Note: we are taking only first session and first device by default, needs optimization"
+          export BROWSERSTACK_SESSION_ID=$(echo $BUILD_STATUS_RESPONSE | jq -c -r '.devices[0].sessions[0].id')
+          
+          echo "Session ID: $BROWSERSTACK_SESSION_ID"
+          echo "Taking build status response's session ID and getting session results..."
+          
+          SESSION_RESULTS="$( \
+          curl -u "${{env.BS_USERNAME}}:${{env.BS_ACCESS_KEY}}" \
+          -X GET "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/builds/${{env.BUILD_ID}}/sessions/{"session_id_here"}")" 
+          #${BROWSERSTACK_SESSION_ID}
+          
+          export INSTRUMENTATION_LOG_URL=$(echo $SESSION_RESULTS | jq -c -r '.testcases.data[0].testcases[1].instrumentation_log')
+          echo "Instrumentation log url: $INSTRUMENTATION_LOG_URL"
+          INSTRUMENT_LOG_TEXT_RESULT=$(curl -u "${{ env.BS_USERNAME}}:${{ env.BS_ACCESS_KEY }}" $INSTRUMENTATION_LOG_URL)
+          # echo "Instrumentation log text result: $INSTRUMENT_LOG_TEXT_RESULT"
+
+          # echo "Convert to JUnit-xml"
+          echo $INSTRUMENT_LOG_TEXT_RESULT >> instrument_log_text.txt
+          cat instrument_log_text.txt | xcpretty -r junit
+          
+          # echo "$JUNIT_RESULT"
+          echo "Sending test results to test management"
+          curl -k -X POST "https://test-management.browserstack.com/api/v1/import/results/xml/junit" \
+          -u "${{ env.BS_TM_KEY }}" \
+          -F project_name="${{ env.TEST_MANAGEMENT_PROJECT_NAME }}" \
+          -F "file_path=@./build/reports/junit.xml" \
+          -F test_run_name="${{ env.TEST_RUN_NAME }}" \
+          -F user_email="${{ env.USER_EMAIL }}" \
 
